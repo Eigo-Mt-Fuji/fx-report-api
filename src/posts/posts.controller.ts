@@ -8,9 +8,8 @@ export class PostsController {
     @Get()
     public index(@Res() res: Response) {
 
-        res.contentType("application/json;charset=utf-8;");
-
-        return res.json([
+        res.contentType("application/json;charset=utf-8");
+        const data = [
             {
               "userId": 1,
               "id": 1,
@@ -71,6 +70,8 @@ export class PostsController {
               "title": "optio molestias id quia eum",
               "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
             }
-        ]);
+        ];
+        res.header("X-Total-Count", `${data.length}`);
+        return res.json(data);
     }
 }

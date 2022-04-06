@@ -6,8 +6,8 @@ export class UsersController {
 
     @Get()
     public index(@Res() res: Response) {
-        res.contentType("application/json");
-        return res.json([
+        res.contentType("application/json;charset=utf-8");
+        const data = [
             {
               "id": 1,
               "name": "Leanne Graham",
@@ -238,6 +238,8 @@ export class UsersController {
                 "bs": "target end-to-end models"
               }
             }
-        ]);
+        ];
+        res.header("X-Total-Count", `${data.length}`);
+        return res.json(data);
     }
 }
