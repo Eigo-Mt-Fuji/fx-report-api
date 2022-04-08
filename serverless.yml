@@ -1,0 +1,33 @@
+service: fx-report-api
+variablesResolutionMode: 20210326
+configValidationMode: error
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-northeast-1
+  lambdaHashingVersion: 20201221
+  memorySize: 512
+  timeout: 15
+  stackName: ${sls:stage}-fx-report-api
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - "s3:*"
+          Resource:
+            - 'arn:aws:s3:::${emv:NESTJS_DATA_S3_BUCKET}'
+            - 'arn:aws:s3:::${emv:NESTJS_DATA_S3_BUCKET}/*'
+plugins:
+  - serverless-offline
+functions:
+  main:
+    handler: dist/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
