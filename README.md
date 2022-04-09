@@ -68,6 +68,49 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
+
+## Deploy
+
+- serverless frameworkでnest.jsのデプロイができるか確認
+
+```
+asdf global nodejs 14.19.1
+```
+
+```
+$ node --version
+v14.19.1
+```
+
+```
+npm install -g serverless
+```
+
+
+```
+sls --version
+```
+
+```
+sls --help
+Serverless Framework v3.12.0
+```
+
+```
+yarn install
+```
+
+```
+yarn run build
+```
+
+
+```
+sls deploy --stage prd
+```
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
